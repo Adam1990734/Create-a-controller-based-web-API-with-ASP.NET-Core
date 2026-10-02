@@ -1,4 +1,5 @@
 using BookStoreApi.Models;
+using BookStoreApi.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,6 +14,7 @@ var app = builder.Build();
 builder.Services.Configure<BookStoreDatabaseSettings>(
     builder.Configuration.GetSection("BookStoreDatabase")    
 );
+builder.Services.AddSingleton<BooksService>();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
