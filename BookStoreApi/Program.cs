@@ -1,3 +1,5 @@
+using BookStoreApi.Models;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -7,6 +9,10 @@ builder.Services.AddControllers();
 builder.Services.AddOpenApi();
 
 var app = builder.Build();
+
+builder.Services.Configure<BookStoreDatabaseSettings>(
+    builder.Configuration.GetSection("BookStoreDatabase")    
+);
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
